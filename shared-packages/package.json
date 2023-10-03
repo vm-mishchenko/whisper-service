@@ -1,0 +1,10 @@
+{
+  "name": "shared-packages",
+  "version": "1.0.0",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "6.1.0",
+    "@aws-sdk/client-sqs": "3.409.0"
+  }
+}

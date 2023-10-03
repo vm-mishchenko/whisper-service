@@ -1,0 +1,8 @@
+.idea
+local
+node_modules
+notes
+p-2309-whisper
+venv
+.env
+dist

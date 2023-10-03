@@ -1,0 +1,24 @@
+{
+  "name": "worker",
+  "version": "1.0.0",
+  "description": "Reads tasks from AWS SQS, transcribes podcasts, and saves transcription to MongoDB artifact collection.",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/worker/src/worker.js",
+    "dev": "npm run build && npm run start",
+    "build": "npm run _clean && npm run _compile",
+    "_compile": "tsc -p tsconfig.json",
+    "_clean": "rm -rf dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "16.3.1",
+    "mongodb": "6.1.0",
+    "@aws-sdk/client-sqs": "3.409.0",
+    "@aws-sdk/client-secrets-manager": "3.410.0"
+  },
+  "devDependencies": {
+    "typescript": "5.2.2"
+  }
+}
