@@ -13,12 +13,10 @@ export const processTask = async (task: Task, artifactRepository: ArtifactReposi
     }
 
     // Transcribe audio.
-    let firstChunk = true;
     const onTranscriptionLines = (lines: string[]) => {
         console.log(`Add chunk to artifact, artifactId: ${artifactId}`);
         const chunks = lines.map(_mapLineToTranscriptionChunk);
-        artifactRepository.addTranscriptionChunkToArtifact(artifactId!, chunks, firstChunk);
-        firstChunk = false;
+        artifactRepository.addTranscriptionChunkToArtifact(artifactId!, chunks);
     };
     const onSuccess = () => {
         console.log(`Mark artifact as success, artifactId: ${artifactId}`);

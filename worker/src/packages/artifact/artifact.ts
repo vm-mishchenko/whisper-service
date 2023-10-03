@@ -20,7 +20,7 @@ export class ArtifactRepositoryWorker extends ArtifactRepository {
         return {shouldTranscribe: true, artifactId: existingArtifact._id};
     }
 
-    async addTranscriptionChunkToArtifact(artifactId: string, chunks: TranscriptionChunk[], isFirstChunk = false) {
+    async addTranscriptionChunkToArtifact(artifactId: string, chunks: TranscriptionChunk[]) {
         const filter = {
             [Fields._id]: artifactId,
         };
