@@ -1,4 +1,4 @@
-import {Artifact, Fields} from "./artifact.types";
+import {Artifact} from "./artifact.types";
 import {WithId, MongoClient, Collection} from "mongodb";
 
 export class ArtifactRepository {

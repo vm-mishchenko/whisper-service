@@ -5,7 +5,6 @@ import {
     Artifact
 } from "../../../../shared-packages/artifact/artifact.types";
 import {ArtifactRepository} from "../../../../shared-packages/artifact/artifact";
-import {WithId} from "mongodb";
 
 export class ArtifactRepositoryWorker extends ArtifactRepository {
     async addTranscriptionChunkToArtifact(artifactId: string, chunks: TranscriptionChunk[]) {
