@@ -1,7 +1,7 @@
 # Whisper app
 App is a web server that:
-- exposes api that returns transcription for requested audio url
-- schedules transcription by adding task to the `AWS SQS` queue
+- exposes api that returns transcription for requested audio
+- schedules transcription
 
 Demo: https://whisper-app-b4lxkp5rjq-uc.a.run.app
 
@@ -14,11 +14,6 @@ Demo: https://whisper-app-b4lxkp5rjq-uc.a.run.app
 
 
 ### Set up
-- create AWS account
-- create AWS API key to access SQS queue
-- create SQS queue
-- install dependencies
-
 **Install nodejs dependencies**
 ```shell
 cd shared-packages && npm i
@@ -36,9 +31,6 @@ npm run dev
 
 **Environment variables**
 ```shell
-AWS_ACCESS_KEY=xxx
-AWS_SECRET_ACCESS_KEY=xxx
-AWS_SQS_QUEUE_URL=xxx
 MONGODB_CLUSTER=xxx
 MONGODB_USER=atlas-xxx
 MONGODB_PASSWORD=xxx
@@ -56,9 +48,6 @@ docker build --platform=linux/amd64 --tag gcr.io/podcasts-search-project/whisper
 # Run image locally 
 docker run --init \
 --publish 3000:3000 \
---env AWS_SQS_QUEUE_URL=xxx \
---env AWS_ACCESS_KEY=xxx \
---env AWS_SECRET_ACCESS_KEY=xxx \
 --env MONGODB_CLUSTER=xxx \
 --env MONGODB_USER=xxx \
 --env MONGODB_PASSWORD=xxx \
@@ -86,9 +75,6 @@ gcloud beta run deploy whisper-app \
 --region=us-central1 \
 --memory=128Mi \
 --project=podcasts-search-project \
---set-env-vars "AWS_SQS_QUEUE_URL=xxx" \
---set-env-vars "AWS_ACCESS_KEY=xxx" \
---set-env-vars "AWS_SECRET_ACCESS_KEY=xxx" \
 --set-env-vars "MONGODB_CLUSTER=xxx" \
 --set-env-vars "MONGODB_USER=xxx" \
 --set-env-vars "MONGODB_PASSWORD=xxx" \

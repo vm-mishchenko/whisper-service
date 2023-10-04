@@ -11,9 +11,6 @@ const assertValue = (value: string | undefined, key: string): string => {
 }
 
 export const config = {
-    AWS_SQS_QUEUE_URL: assertValue(process.env.AWS_SQS_QUEUE_URL, 'AWS_SQS_QUEUE_URL'),
-    AWS_ACCESS_KEY: assertValue(process.env.AWS_ACCESS_KEY, 'AWS_ACCESS_KEY'),
-    AWS_SECRET_ACCESS_KEY: assertValue(process.env.AWS_SECRET_ACCESS_KEY, 'AWS_SECRET_ACCESS_KEY'),
     MONGODB_CLUSTER: assertValue(process.env.MONGODB_CLUSTER, 'MONGODB_CLUSTER'),
     MONGODB_USER: assertValue(process.env.MONGODB_USER, 'MONGODB_USER'),
     MONGODB_PASSWORD: assertValue(process.env.MONGODB_PASSWORD, 'MONGODB_PASSWORD'),

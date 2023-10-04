@@ -1,4 +1,3 @@
-// Configure mongodb connection
 import {MongoClient} from "mongodb";
 
 export const getMongoDBClient = (user: string, password: string, cluster: string): MongoClient => {

@@ -1,18 +1,15 @@
 # Whisper worker
 
 Worker is a long-running process that:
-- reads the next audio to transcribe from `AWS SQS` queue
+- reads the next audio to transcribe from `MongoDB` collection
 - transcribes audio using `whisper` binary
-- saves transcription into `MongoDB` Atlas cluster
+- saves transcription back into `MongoDB`
 
 
 ## Local development
 
 
 ### Set up
-- create AWS account
-- create AWS API keys
-- create SQS queue
 - install dependencies
 
 **Install nodejs dependencies**
@@ -52,9 +49,6 @@ npm run dev
 
 **Environment variables**
 ```shell
-AWS_ACCESS_KEY=xxx
-AWS_SECRET_ACCESS_KEY=xxx
-AWS_SQS_QUEUE_URL=xxx
 SLEEP_IN_SEC=xxx
 WHISPER_BINARY_PATH=xxx
 MONGODB_CLUSTER=xxx
@@ -74,9 +68,6 @@ docker image build --tag whisper-worker:latest .
 
 # Run worker image
 docker run --init \
---env AWS_SQS_QUEUE_URL=xxx \
---env AWS_ACCESS_KEY=xxx \
---env AWS_SECRET_ACCESS_KEY=xxx \
 --env SLEEP_IN_SEC=xxx \
 --env MONGODB_CLUSTER=xxx \
 --env MONGODB_USER=xxx \

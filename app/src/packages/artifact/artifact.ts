@@ -1,4 +1,4 @@
-import {ArtifactStatus, Artifact} from "../../../../shared-packages/artifact/artifact.types";
+import {ArtifactStatus, Artifact, Fields} from "../../../../shared-packages/artifact/artifact.types";
 import {ArtifactRepository} from "../../../../shared-packages/artifact/artifact";
 import {MongoClient} from "mongodb";
 
@@ -24,6 +24,14 @@ export class ArtifactRepositoryApp extends ArtifactRepository {
         artifact._id = insertResult.insertedId;
 
         return artifact;
+    }
+
+    async findArtifact(audioUrl: string): Promise<Artifact | undefined> {
+        const artifactDoc = await this._artifacts.findOne({[Fields.audioUrl]: audioUrl});
+        if (artifactDoc) {
+            const artifact = this._mapDocToArtifact(artifactDoc)
+            return artifact;
+        }
     }
 
     async deleteArtifact(artifactId: string) {
