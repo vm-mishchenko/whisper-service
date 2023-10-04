@@ -73,7 +73,7 @@ gcloud beta run deploy whisper-app \
 --port=3000 \
 --min-instances=0 \
 --max-instances=1 \
---platform=managed \
+--platform=managed \ 
 --region=us-central1 \
 --memory=128Mi \
 --project=podcasts-search-project \

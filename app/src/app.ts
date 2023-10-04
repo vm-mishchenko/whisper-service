@@ -15,6 +15,10 @@ const artifactRepository = new ArtifactRepositoryApp(
 
 // Start web server
 const app = express()
+const bodyParser = require('body-parser')
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', async function (request, response) {
     response.send(`Use /api/audio to get transcription, e.g. /api/audio/?url=https://eslyes.com/easydialogs/audio/dailylife010.mp3`);
@@ -22,7 +26,7 @@ app.get('/', async function (request, response) {
 
 app.post('/api/audio', async function (request, response) {
     // validate request
-    const audioUrl = request.query['url'] as string;
+    const audioUrl = request.body['url'];
     if (!audioUrl) {
         response.statusCode = 400;
         response.end(`Specify "url" query parameter, e.g. /api/audio/?url=https://eslyes.com/easydialogs/audio/dailylife010.mp3`);
@@ -53,6 +57,7 @@ app.post('/api/audio', async function (request, response) {
 
     // Artifact doesn't exist at this point. Schedule processing if ADMIN_ACCESS_TOKEN is valid or absent.
     const REQUEST_ADMIN_ACCESS_TOKEN = request.body.ADMIN_ACCESS_TOKEN;
+
     if (!config.ADMIN_ACCESS_TOKEN || config.ADMIN_ACCESS_TOKEN === REQUEST_ADMIN_ACCESS_TOKEN) {
         const newArtifact = await artifactRepository.createArtifact(audioUrl);
         console.log(`Scheduled to process a new audio, artifactId: ${newArtifact._id}, audioUrl, ${audioUrl}.`);
