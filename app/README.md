@@ -37,6 +37,7 @@ MONGODB_PASSWORD=xxx
 MONGODB_ARTIFACTS_DATABASE_NAME=xxx
 MONGODB_ARTIFACTS_COLLECTION_NAME=xxx
 AUDIO_PROCESSING_STALE_TIME_IN_HOURS=xxx
+ADMIN_ACCESS_TOKEN=xxx
 ```
 
 ### Run locally in Docker
@@ -54,6 +55,7 @@ docker run --init \
 --env MONGODB_ARTIFACTS_DATABASE_NAME=xxx \
 --env MONGODB_ARTIFACTS_COLLECTION_NAME=xxx \
 --env AUDIO_PROCESSING_STALE_TIME_IN_HOURS=xxx \
+--env ADMIN_ACCESS_TOKEN=xxx \
 gcr.io/podcasts-search-project/whisper-app:latest
 ```
 
@@ -80,5 +82,6 @@ gcloud beta run deploy whisper-app \
 --set-env-vars "MONGODB_PASSWORD=xxx" \
 --set-env-vars "MONGODB_ARTIFACTS_DATABASE_NAME=xxx" \
 --set-env-vars "MONGODB_ARTIFACTS_COLLECTION_NAME=xxx" \
---set-env-vars "AUDIO_PROCESSING_STALE_TIME_IN_HOURS=xxx"
+--set-env-vars "AUDIO_PROCESSING_STALE_TIME_IN_HOURS=xxx" \
+--set-env-vars "ADMIN_ACCESS_TOKEN=xxx"
 ```
