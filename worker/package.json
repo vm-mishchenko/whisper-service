@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node dist/worker/src/worker.js",
+    "transcribe": "node dist/worker/src/transcribe.js",
     "dev": "npm run build && npm run start",
+    "dev_transcribe": "npm run build && npm run transcribe",
     "build": "npm run _clean && npm run _compile",
     "_compile": "tsc -p tsconfig.json",
     "_clean": "rm -rf dist"
